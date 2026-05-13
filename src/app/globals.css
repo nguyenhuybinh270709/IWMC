@@ -5,6 +5,24 @@
   --foreground: #171717;
 }
 
+@theme {
+  --color-background: #000814;
+  --color-foreground: #f8fafc;
+
+  --color-primary: #c5a059;
+  --color-primary-foreground: #000814;
+
+  --color-card: #001226;
+  --color-card-foreground: #f8fafc;
+
+  --color-border: rgba(255, 255, 255, 0.1);
+
+  --radius-xl: 1rem;
+  --radius-lg: 0.75rem;
+  --radius-md: 0.5rem;
+  --radius-sm: 0.25rem;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
