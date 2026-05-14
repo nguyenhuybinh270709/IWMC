@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui";
+import Link from "next/link";
 
 export function Programs() {
   const trainingPrograms = [
@@ -7,24 +8,28 @@ export function Programs() {
       desc: "Trang bị tư duy lãnh đạo, quản trị doanh nghiệp và kỹ năng thực chiến cho thế hệ trẻ.",
       age: "12 - 17",
       color: "bg-emerald-900/40",
+      href: "https://juniorceo.edu.vn/",
     },
     {
       title: "LEGACY 18",
       desc: "Hành trình 18 tháng định hình bản lĩnh độc lập, tư duy tài chính và di sản cá nhân.",
       age: "15 - 18",
       color: "bg-amber-900/40",
+      href: "/",
     },
     {
       title: "GLOBAL CITIZEN ELITE",
       desc: "Phát triển năng lực toàn cầu, tư duy quốc tế, kỹ năng mềm, trách nhiệm xã hội.",
       age: "18 - 21",
       color: "bg-blue-900/40",
+      href: "/",
     },
     {
       title: "GLOBAL SCHOLAR LAUNCHPAD",
       desc: "Chuẩn bị du học & học bổng bậc đại học; thuật hồ sơ phỏng vấn, định hướng tương lai.",
       age: "15 - 22",
       color: "bg-purple-900/40",
+      href: "/",
     },
   ];
 
@@ -48,25 +53,27 @@ export function Programs() {
               key={i}
               className={`${p.color} border-none text-white overflow-hidden group flex flex-col h-full`}
             >
-              <div className="aspect-video bg-gray-800 relative overflow-hidden shrink-0">
-                <div className="absolute inset-0 group-hover:scale-110 transition-transform duration-500 bg-[url('/program-thumb.jpg')] bg-cover" />
-              </div>
-
-              <CardContent className="p-6 text-center flex flex-col flex-1">
-                <h3 className="text-white/90 text-xl font-bold mb-3">
-                  {p.title}
-                </h3>
-                <p className="text-sm text-gray-300 mb-3 line-clamp-3">
-                  {p.desc}
-                </p>
-
-                <div className="mt-auto">
-                  <p className="text-xs font-semibold">
-                    <span className="text-amber-200">Độ tuổi: </span>
-                    <span className="text-white/90">{p.age}</span>
-                  </p>
+              <Link href={p.href}>
+                <div className="aspect-video bg-gray-800 relative overflow-hidden shrink-0">
+                  <div className="absolute inset-0 group-hover:scale-110 transition-transform duration-500 bg-[url('/program-thumb.jpg')] bg-cover" />
                 </div>
-              </CardContent>
+
+                <CardContent className="p-6 text-center flex flex-col flex-1">
+                  <h3 className="text-white/90 text-xl font-bold mb-3">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-gray-300 mb-3 line-clamp-3">
+                    {p.desc}
+                  </p>
+
+                  <div className="mt-auto">
+                    <p className="text-xs font-semibold">
+                      <span className="text-amber-200">Độ tuổi: </span>
+                      <span className="text-white/90">{p.age}</span>
+                    </p>
+                  </div>
+                </CardContent>
+              </Link>
             </Card>
           ))}
         </div>

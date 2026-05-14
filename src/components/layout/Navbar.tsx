@@ -29,8 +29,7 @@ const TRAINING_PROGRAMS = [
     title: "Junior CEO",
     description: "Chương trình dành cho lãnh đạo trẻ tương lai",
     icon: "/navbar/junior-ceo.png",
-    // href: "/program/junior-ceo",
-    href: "#program",
+    href: "https://juniorceo.edu.vn/",
   },
   {
     title: "Legacy 18",
