@@ -56,8 +56,7 @@ const TRAINING_PROGRAMS = [
 
 const NAV_ITEMS = [
   { title: "TRANG CHỦ", href: "/" },
-  // { title: "VỀ IWMC", href: "/about" },
-  { title: "VỀ IWMC", href: "#about" },
+  { title: "VỀ IWMC", href: "/about" },
   // { title: "HỖ TRỢ IPO", href: "/support" },
   { title: "HỖ TRỢ IPO", href: "#about" },
   { title: "ĐÀO TẠO KẾ CẬN", href: "/program", dropdown: true },
