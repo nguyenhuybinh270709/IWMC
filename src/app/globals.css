@@ -11,10 +11,16 @@
   --color-card-foreground: #f8fafc;
 
   --color-border: rgba(255, 255, 255, 0.1);
+
+  --header-height: 80px;
 }
 
 html {
   scroll-behavior: smooth !important;
+}
+
+section {
+  scroll-margin-top: var(--header-height);
 }
 
 body {
