@@ -60,8 +60,7 @@ const NAV_ITEMS = [
   { title: "HỖ TRỢ IPO", href: "/support" },
   { title: "ĐÀO TẠO KẾ CẬN", href: "/program", dropdown: true },
   { title: "TIN TỨC", href: "/news" },
-  // { title: "LIÊN Hệ", href: "/contact" },
-  { title: "LIÊN Hệ", href: "#contact" },
+  { title: "LIÊN Hệ", href: "/contact" },
 ];
 
 const LANGUAGES = [
