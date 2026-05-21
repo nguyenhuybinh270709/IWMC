@@ -1,48 +1,39 @@
 import {
   AboutIWMC,
+  BottomCTA,
   Hero,
   Mission,
   News,
   Programs,
 } from "@/app/(home)/_components";
-import { Button } from "@/components/ui";
-import { ArrowRight } from "lucide-react";
+import { HomeService } from "@/services/home.service";
+import { Metadata } from "next";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "IWMC - Hỗ trợ IPO - Quản lý Gia sản - Đào tạo Kế cận",
+  description:
+    "Những yếu tố doanh nghiệp cần chuẩn bị để IPO thuận lợi và bền vững.",
+};
+
+export default async function Home() {
+  const data = await HomeService.getData();
+  if (!data) return null;
+
   return (
     <main className="min-h-screen bg-[#050810]">
-      <Hero />
+      <Hero hero={data.hero} />
 
-      <Mission />
+      <Mission mission={data.mission} />
 
-      <section id="about">
-        <AboutIWMC />
-      </section>
+      <AboutIWMC about_iwmc={data.about_iwmc} />
 
       <section id="program">
-        <Programs />
+        <Programs programs={data.programs} />
       </section>
 
-      <section id="news">
-        <News />
-      </section>
+      <News news={data.news} />
 
-      <section id="contact" className="container mx-auto lg:px-12 pb-12">
-        <div className="bg-linear-to-br from-[#f9d696] to-[#cfa557] px-12 py-8 lg:rounded-2xl flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-center lg:text-left">
-            <h2 className="pt-2 lg:pt-1 text-3xl lg:text-2xl mb-1 lg:mb-0 font-bold text-[#050810] uppercase">
-              Sẵn sàng đồng hành cùng bạn
-            </h2>
-            <p className="text-lg lg:text-base font-semibold text-[#050810]">
-              Hãy kết mối với IWMC để cùng kiến tạo những giá trị bền vững.
-            </p>
-          </div>
-          <Button className="w-fit bg-[#050810] text-white hover:bg-[#050810]/90 px-10 py-6 text-base transition-all duration-200 hover:scale-103 active:scale-95 cursor-pointer">
-            KẾT NỐI VỚI CHÚNG TÔI
-            <ArrowRight />
-          </Button>
-        </div>
-      </section>
+      <BottomCTA bottom_cta={data.bottom_cta} />
     </main>
   );
 }

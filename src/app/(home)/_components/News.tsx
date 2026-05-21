@@ -1,8 +1,12 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { HomeData } from "@/services/home.service";
 
-export function News() {
-  const news = [
+type NewsProps = Pick<HomeData, "news">;
+
+export function News({ news }: NewsProps) {
+  const mock_news = [
     {
       tag: "SỰ KIỆN",
       date: "10/06/2024",
@@ -27,18 +31,15 @@ export function News() {
     <section className="py-12 px-2 bg-[#010816] text-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="pt-1 text-3xl font-bold uppercase mb-4">
-            Tin tức nổi bật
+          <h2 className="pt-1 text-3xl lg:text-4xl font-bold uppercase mb-4">
+            {news.title}
           </h2>
           <div className="w-12 h-0.5 bg-[#d5ad64] mx-auto mb-6" />
-          <p className="text-base text-white/70 mx-auto">
-            Hành trình học tập được thiết kế chuyên biệt, truyền cảm hứng và
-            trao quyền cho thế hệ trẻ.
-          </p>
+          <p className="text-base text-white/70 mx-auto">{news.description}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {news.map((item, i) => (
+          {mock_news.map((item, i) => (
             <article
               key={i}
               className="group p-5 rounded-xl border border-white/10 bg-linear-to-b from-white/5 to-transparent hover:border-[#d5ad64]/30 transition-all duration-300"
@@ -73,10 +74,12 @@ export function News() {
         </div>
 
         <div className="flex justify-center">
-          <button className="group flex items-center gap-3 bg-linear-to-r from-[#d5ad64] to-[#a67c37] px-8 py-3 rounded-lg text-[#010816] font-bold text-sm uppercase hover:brightness-110 transition-all duration-200 hover:scale-103 active:scale-95 cursor-pointer">
-            Xem tất cả bài viết
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </button>
+          <Link href={"news"}>
+            <button className="group flex items-center gap-3 bg-linear-to-r from-[#d5ad64] to-[#a67c37] px-8 py-3 rounded-lg text-[#010816] font-bold text-sm uppercase hover:brightness-110 transition-all duration-200 hover:scale-103 active:scale-95 cursor-pointer">
+              Xem tất cả bài viết
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </button>
+          </Link>
         </div>
       </div>
     </section>

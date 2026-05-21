@@ -1,22 +1,26 @@
 import Image from "next/image";
 import { ArrowRight, Check } from "lucide-react";
+import { HomeData } from "@/services/home.service";
 
-export function Mission() {
+type MissionProps = Pick<HomeData, "mission">;
+
+export function Mission({ mission }: MissionProps) {
   return (
-    <section className="py-12 bg-[#010816] flex flex-col items-center">
+    <section className="py-12 bg-[#010816] flex flex-col items-center px-4 ">
       <div className="mb-8 text-center">
-        <h2 className="text-white text-xl lg:text-3xl font-bold uppercase flex flex-col items-center gap-3">
-          Hai trụ cột – Một sứ mệnh
+        <h2 className="lg:pt-2 text-white text-[22px] lg:text-4xl font-bold uppercase flex flex-col items-center gap-3">
+          {mission.title}
           <span className="w-14 h-[1.5px] bg-[#d5ad64]"></span>
         </h2>
       </div>
 
-      <div className="container w-[95%] mx-auto px-4 relative">
+      <div className="container w-[95%] mx-auto relative">
+        {/* Logo */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden lg:block">
           <div className="size-64 rounded-full bg-[#010816] flex items-center justify-center p-2 shadow-[0_0_60px_rgba(0,0,0,0.8)]">
             <div className="w-full h-full rounded-full flex items-center justify-center relative overflow-hidden">
               <Image
-                src="/home/Logo.png"
+                src={mission.logo}
                 alt="IWMC Logo"
                 fill
                 className="object-contain scale-110"
@@ -26,33 +30,25 @@ export function Mission() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-px bg-white/5 overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
+          {/* Left */}
           <div className="bg-[#0a1628]/60 p-10 lg:pr-36 backdrop-blur-xl relative">
-            <div className="flex flex-col lg:flex-row items-start gap-3 lg:gap-1 mb-6">
+            <div className="flex flex-col lg:flex-row items-start gap-3 lg:gap-6 mb-6">
               <Image
-                src="/home/MissionIcon1.png"
+                src={mission.left.icon}
                 alt="Icon"
                 width={48}
                 height={48}
                 className="size-18 lg:size-12 object-contain shrink-0 mx-auto"
               />
               <div>
-                <h3 className="text-xl lg:text-2xl font-bold text-[#d5ad64] uppercase leading-tight tracking-tight">
-                  Tư vấn & Hỗ trợ
-                  <br />
-                  Doanh nghiệp niêm yết
+                <h3 className="text-center lg:text-left text-[19px] lg:text-2xl font-bold text-[#d5ad64] uppercase">
+                  {mission.left.title}
                 </h3>
                 <p className="text-gray-400 text-[13px] leading-relaxed mt-3 max-w-70">
-                  Đồng hành cùng doanh nghiệp trên hành trình niêm yết và tăng
-                  trưởng bền vững.
+                  {mission.left.description}
                 </p>
                 <ul className="space-y-3 mt-3 my-6">
-                  {[
-                    "Tư vấn niêm yết (IPO)",
-                    "Tái cấu trúc & Quản trị",
-                    "Quản lý tài sản doanh nghiệp",
-                    "IR & Truyền thông tài chính",
-                    "Tăng trưởng bền vững",
-                  ].map((item) => (
+                  {mission.left.content.map((item) => (
                     <li
                       key={item}
                       className="flex items-center gap-3 text-[13px] text-gray-300/90 font-medium"
@@ -74,29 +70,25 @@ export function Mission() {
             </div>
           </div>
 
+          {/* Right */}
           <div className="bg-[#0a1628]/60 p-10 lg:pl-36 backdrop-blur-xl relative">
-            <div className="flex flex-col lg:flex-row items-start gap-3 lg:gap-1 mb-6">
+            <div className="flex flex-col lg:flex-row items-start gap-3 lg:gap-0 mb-6">
               <Image
-                src="/home/MissionIcon2.png"
+                src={mission.right.icon}
                 alt="Icon"
                 width={48}
                 height={48}
                 className="size-18 lg:size-12 object-contain shrink-0 mx-auto"
               />
               <div>
-                <h3 className="text-xl lg:text-2xl font-bold text-[#d5ad64] uppercase leading-tight tracking-tight">
-                  Đào tạo thế hệ kế cận
+                <h3 className="text-center lg:text-left text-xl lg:text-2xl font-bold text-[#d5ad64] uppercase leading-tight tracking-tight">
+                  {mission.right.title}
                 </h3>
                 <p className="text-gray-400 text-[13px] leading-relaxed mt-3 max-w-70">
-                  Kiến tạo thế hệ công dân toàn cầu – lãnh đạo tương lai.
+                  {mission.right.description}
                 </p>
                 <ul className="space-y-3 mt-3 mb-6">
-                  {[
-                    "Junior CEO",
-                    "Legacy 18",
-                    "Global Citizen Elite",
-                    "Global Scholar Launchpad",
-                  ].map((item) => (
+                  {mission.right.content.map((item) => (
                     <li
                       key={item}
                       className="flex items-center gap-3 text-[13px] text-gray-300/90 font-medium"

@@ -1,75 +1,52 @@
 import { Card, CardContent } from "@/components/ui";
+import { HomeData } from "@/services/home.service";
+import Image from "next/image";
 import Link from "next/link";
 
-export function Programs() {
-  const trainingPrograms = [
-    {
-      title: "JUNIOR CEO",
-      desc: "Trang bị tư duy lãnh đạo, quản trị doanh nghiệp và kỹ năng thực chiến cho thế hệ trẻ.",
-      age: "12 - 17",
-      color: "bg-emerald-900/40",
-      href: "https://juniorceo.edu.vn/",
-    },
-    {
-      title: "LEGACY 18",
-      desc: "Hành trình 18 tháng định hình bản lĩnh độc lập, tư duy tài chính và di sản cá nhân.",
-      age: "15 - 18",
-      color: "bg-amber-900/40",
-      href: "/",
-    },
-    {
-      title: "GLOBAL CITIZEN ELITE",
-      desc: "Phát triển năng lực toàn cầu, tư duy quốc tế, kỹ năng mềm, trách nhiệm xã hội.",
-      age: "18 - 21",
-      color: "bg-blue-900/40",
-      href: "/",
-    },
-    {
-      title: "GLOBAL SCHOLAR LAUNCHPAD",
-      desc: "Chuẩn bị du học & học bổng bậc đại học; thuật hồ sơ phỏng vấn, định hướng tương lai.",
-      age: "15 - 22",
-      color: "bg-purple-900/40",
-      href: "/",
-    },
-  ];
+type ProgramsProps = Pick<HomeData, "programs">;
 
+export function Programs({ programs }: ProgramsProps) {
   return (
     <section className="py-24 bg-[#0a0f1a] text-white">
       <div className="container mx-auto px-8">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold uppercase mb-4">
-            Chương trình đào tạo thế hệ kế cận
+          <h2 className="text-3xl lg:text-4xl font-bold uppercase mb-4">
+            {programs.title}
           </h2>
           <div className="w-18 h-0.5 bg-[#d5ad64] font-bold mx-auto" />
-          <p className="text-base text-white/70 mt-6">
-            Hành trình học tập được thiết kế chuyên biệt, truyền cảm hứng và
-            trao quyền cho thế hệ trẻ.
-          </p>
+          <p className="text-base text-white/70 mt-6">{programs.description}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
-          {trainingPrograms.map((p, i) => (
+          {programs.training_programs.map((item, i) => (
             <Card
               key={i}
-              className={`${p.color} border-none text-white overflow-hidden group flex flex-col h-full`}
+              className={`${item.color} border-none text-white overflow-hidden group flex flex-col h-full`}
             >
-              <Link href={p.href}>
+              <Link href={item.link}>
                 <div className="aspect-video bg-gray-800 relative overflow-hidden shrink-0">
-                  <div className="absolute inset-0 group-hover:scale-110 transition-transform duration-500 bg-[url('/program-thumb.jpg')] bg-cover" />
+                  {item.image && (
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  )}
                 </div>
 
-                <CardContent className="p-6 text-center flex flex-col flex-1">
-                  <h3 className="text-white/90 text-xl font-bold mb-3">
-                    {p.title}
+                <CardContent className="px-4 py-6 text-center flex flex-col flex-1">
+                  <h3 className="text-white/90 text-xl lg:text-[16.5px] font-bold mb-2">
+                    {item.title}
                   </h3>
                   <p className="text-sm text-gray-300 mb-3 line-clamp-3">
-                    {p.desc}
+                    {item.description}
                   </p>
 
                   <div className="mt-auto">
                     <p className="text-xs font-semibold">
                       <span className="text-amber-200">Độ tuổi: </span>
-                      <span className="text-white/90">{p.age}</span>
+                      <span className="text-white/90">{item.age}</span>
                     </p>
                   </div>
                 </CardContent>
